@@ -85,8 +85,28 @@ title: My Github YAML Editor Micro Tool Base
 
           });
 
-          $yaml_dump = jsyaml.dump(yaml_store);
+          $yaml_dump = jsyaml.dump($yaml_store);
           console.log($yaml_dump);
+
+          var github = new Github({token: $oAuth_Token,auth: "oauth"});
+          var repo = github.getRepo($org,$repo);
+
+          repo.getTree('gh-pages?recursive=true', function(err, tree) {
+
+            $.each(tree, function(treeKey, treeValue) {
+
+              $writepath = '_data/store.yaml';
+              $path = treeValue['path'];
+              $sha = treeValue['sha'];
+              //console.log($path + ' == ' + $writepath);
+              if($path==$writepath)
+                {
+                repo.writemanual('gh-pages',$writepath, $yaml_dump, 'Save', $sha, function(err) { });
+                console.log("writing " + $writepath);
+                }
+              });
+            });
+
         }
 
 </script>
