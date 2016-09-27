@@ -14,6 +14,9 @@ highlighter:  rouge
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md",".DS_Store"]
 
+github_org: kinlane
+github_repo: github-micro-tool-yaml
+
 
 production_url : http://github-micro-tool.apievangelist.com
 
