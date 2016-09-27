@@ -67,8 +67,17 @@ title: My Github YAML Editor Micro Tool Base
 
       }
 
+      function saveYAMLStore()
+        {
+          $('#editor tr').each(function (i, row) {
+
+            console.log(row);
+
+          });
+        }
+
 </script>
 <h1>My Github YAML Editor Micro Tool Base</h1>
 <p align="center">YAML loaded from _data/store.yaml</p>
 <table width="100%" border="0" cellpadding="3" id="editor"></table>
-<center><input type="button" name="SaveYAML" value="Save YAML" /></center>
+<center><input type="button" name="SaveYAML" value="Save YAML" onclick="saveYAMLStore();" /></center>
