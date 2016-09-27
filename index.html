@@ -42,11 +42,9 @@ title: My Github YAML Editor Micro Tool Base
           // If no error we have access
           alert('We have access to API & repo!');
 
-          repo.contents("_data/store.yaml", function(err, contents) {
-
-            console.log("content: " + contents);
-
-          });
+            repo.read('gh-pages', '_data/store.yaml', function(err, data) {
+              console.log("data: " + data);
+            });
 
           }
         else
