@@ -42,10 +42,11 @@ title: My Github YAML Editor Micro Tool Base
             // If no error we have access, read YAML store
             repo.read('gh-pages', '_data/store.yaml', function(err, data) {
 
-              console.log(data);
               $yaml_store = jsyaml.load(data);
-              console.log($yaml_store);
-              
+              $.each($yaml_store, function($rowKey, $rowEntry) {
+                console.log($rowKey);
+                console.log($rowEntry);
+              });
             });
           }
         else
