@@ -6,7 +6,7 @@ title: My Github YAML Editor Micro Tool Base
 <script type="text/javascript">
 
     // Reset the cookie manually
-    Cookies.expire('token');
+    //Cookies.expire('token');
 
     var $oAuthToken = getUrlVar('token');
 
@@ -25,13 +25,11 @@ title: My Github YAML Editor Micro Tool Base
 
       }
 
+    // Grab the token from cookie
+    $oAuthToken = Cookies.get('token');
+
     if($oAuthToken!='')
       {
-
-      // Grab the token from cookie
-      $oAuthToken = Cookies.get('token');
-
-      if
       // Setup the Github connection
       var github = new Github({token: $oAuthToken,auth: "oauth"});
       var repo = github.getRepo($org,$repo);
