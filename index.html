@@ -69,12 +69,14 @@ title: My Github YAML Editor Micro Tool Base
 
       function saveYAMLStore()
         {
-          $('#editor tr').each(function (rowKey, rowValue) {
+          $('#editor tr').each(function (i, row) {
 
-            $('#' + rowKey + ' td').each(function (cellKey, cellValue) {
+            console.log(i);
 
-              console.log(cellValue);
-              $textbox = cellValue.find('input:text');
+            $('#' + i + ' td').each(function (j, cell) {
+
+              console.log(cell);
+              $textbox = $cell.find('input:text');
               console.log($textbox);
 
             });
