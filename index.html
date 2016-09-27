@@ -79,8 +79,9 @@ title: My Github YAML Editor Micro Tool Base
               console.log('text-' + i + '-' + j);
               if(document.getElementById($id))
                 {
+                  $name = document.getElementById($id).name
                   $item = document.getElementById($id).value;
-                  console.log("value: " + j + " = " + $item);
+                  console.log("value: " + $name + " = " + $item);
                   console.log("check: " + $yaml_store[i][j]);
                 }
             });
