@@ -73,7 +73,6 @@ title: My Github YAML Editor Micro Tool Base
       function saveYAMLStore()
         {
           $('#editor tr').each(function (i, row) {
-            console.log("check: " + $yaml_store[i]);
             $('#row-' + i + ' td').each(function (j, cell) {
 
               $id = 'text-' + i + '-' + j;
@@ -82,6 +81,7 @@ title: My Github YAML Editor Micro Tool Base
                 {
                   $item = document.getElementById($id).value;
                   console.log("value: " + $item);
+                  console.log("check: " + $yaml_store[i][j]);
                 }
             });
 
