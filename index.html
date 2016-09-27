@@ -75,7 +75,9 @@ title: My Github YAML Editor Micro Tool Base
 
             $('#row-' + i + ' td').each(function (j, cell) {
 
-              $item = document.getElementById('text-' + i + '-' + j).value;
+              $id = 'text-' + i + '-' + j;
+              consolelog('text-' + i + '-' + j);
+              $item = document.getElementById($id).value;
 
               console.log("value: " . $item);
 
