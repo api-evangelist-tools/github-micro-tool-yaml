@@ -73,7 +73,11 @@ title: My Github YAML Editor Micro Tool Base
 
             console.log(row.id);
 
-          
+            $('#' + row.id + ' td').each(function (i, cell) {
+
+              console.log(cell);
+
+            });
 
           });
         }
