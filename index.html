@@ -83,6 +83,8 @@ title: My Github YAML Editor Micro Tool Base
                   $item = document.getElementById($id).value;
                   console.log("value: " + $name + " = " + $item);
                   console.log("check: " + $yaml_store[i][$name]);
+                  $yaml_store[i][$name] = $item;
+                  console.log("check2: " + $yaml_store[i][$name]);
                 }
             });
 
