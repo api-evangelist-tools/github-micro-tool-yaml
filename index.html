@@ -22,7 +22,7 @@ title: My Github YAML Editor Micro Tool Base
       Cookies.set('token', $oAuthToken);
 
       // Set with expiration
-      // Cookies.set('token', $oAuth_Token, { expires: '01/01/2017' });
+      // Cookies.set('token', $oAuthToken, { expires: '01/01/2017' });
 
       }
 
@@ -86,9 +86,11 @@ title: My Github YAML Editor Micro Tool Base
           });
 
           $yaml_dump = jsyaml.dump($yaml_store);
-          console.log($yaml_dump);
 
-          var github = new Github({token: $oAuth_Token,auth: "oauth"});
+          // Grab the token from cookie
+          $oAuthToken = Cookies.get('token');
+
+          var github = new Github({token: $oAuthToken,auth: "oauth"});
           var repo = github.getRepo($org,$repo);
 
           repo.getTree('gh-pages?recursive=true', function(err, tree) {
