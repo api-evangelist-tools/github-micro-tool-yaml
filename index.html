@@ -45,12 +45,12 @@ title: My Github YAML Editor Micro Tool Base
               $yaml_store = jsyaml.load(data);
               $.each($yaml_store, function($rowKey, $rowEntry) {
 
-                $( "editor" ).append( "<tr id='row-" + $rowKey + "'></tr>" );
+                $( "#editor" ).append( "<tr id='row-" + $rowKey + "'></tr>" );
 
                 $.each($rowEntry, function($fieldKey, $fieldEntry) {
-                  console.log($rowKey);
-                  console.log($rowEntry);
-                  $( "row-" + $rowKey ).append( "<td id='cel-" + $fieldKey + "'>" + $rowEntry + "</td>" );
+                  console.log($fieldKey);
+                  console.log($fieldEntry);
+                  $( "#row-" + $rowKey ).append( "<td id='cel-" + $fieldKey + "'>" + $rowEntry + "</td>" );
                 });
 
               });
