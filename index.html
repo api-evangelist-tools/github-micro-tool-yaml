@@ -74,21 +74,19 @@ title: My Github YAML Editor Micro Tool Base
         {
           $('#editor tr').each(function (i, row) {
             $('#row-' + i + ' td').each(function (j, cell) {
-
               $id = 'text-' + i + '-' + j;
-              console.log('text-' + i + '-' + j);
               if(document.getElementById($id))
                 {
                   $name = document.getElementById($id).name
-                  $item = document.getElementById($id).value;
-                  console.log("value: " + $name + " = " + $item);
-                  console.log("check: " + $yaml_store[i][$name]);
-                  $yaml_store[i][$name] = $item;
-                  console.log("check2: " + $yaml_store[i][$name]);
+                  $value = document.getElementById($id).value;
+                  $yaml_store[i][$name] = $value;
                 }
             });
 
           });
+
+          $yaml_dump = jsyaml.dump(yaml_store);
+          console.log($yaml_dump);
         }
 
 </script>
