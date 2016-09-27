@@ -49,7 +49,7 @@ title: My Github YAML Editor Micro Tool Base
               $.each($yaml_store, function($rowKey, $rowEntry) {
 
                 $.each($rowEntry, function($fieldKey, $fieldEntry) {
-                  $( "#editor" ).append( "<tr id='row-" + $fieldKey + "' style='padding: 3px 0px 3px 0px;'><td align='right' style='font-weight: bold;'>" + $fieldKey + ":</td><td><input type='text' name='" + $fieldKey + "' id='row-" + $rowKey + "-" + $fieldKey + "' value='" + $fieldEntry + "' style='width: 100%;' /></td></tr>" );
+                  $( "#editor" ).append( "<tr id='row-" + $rowKey + "' style='padding: 3px 0px 3px 0px;'><td id='row-" + $rowKey + "-" + $fieldKey + "' align='right' style='font-weight: bold;'>" + $fieldKey + ":</td><td><input type='text' name='" + $fieldKey + "' id='text-" + $rowKey + "-" + $fieldKey + "' value='" + $fieldEntry + "' style='width: 100%;' /></td></tr>" );
                 });
 
                 $( "#editor" ).append( "<tr><td colspan='2'><hr style='padding: 0px; margin: 0px;'></td></tr>");
@@ -71,12 +71,13 @@ title: My Github YAML Editor Micro Tool Base
         {
           $('#editor tr').each(function (i, row) {
 
-            console.log("row: " + i);
-
             $('#row-' + i + ' td').each(function (j, cell) {
 
-              console.log("cell: " + j);
-              console.log(cell);
+              $field_name = $('#text-' + i + '-' + j).attr('name');
+              $$field_value = $('#text-' + i + '-' + j).val();
+
+              console.log("name: " . field_name);
+              console.log("value: " . field_value);
 
             });
 
