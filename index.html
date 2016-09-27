@@ -46,7 +46,7 @@ title: My Github YAML Editor Micro Tool Base
               $.each($yaml_store, function($rowKey, $rowEntry) {
 
                 $.each($rowEntry, function($fieldKey, $fieldEntry) {
-                  $( "#editor" ).append( "<tr id='row-" + $rowKey + "' style='border-bottom: 1px solid #000; padding: 3px 0px 3px 0px;'><td>" + $fieldKey + "</td><td>" + $fieldEntry + "</td></tr>" );
+                  $( "#editor" ).append( "<tr id='row-" + $rowKey + "' style='border-bottom: 1px solid #000; padding: 3px 0px 3px 0px;'><td align='right' style='font-weight: bod;'>" + $fieldKey + "</td><td>" + $fieldEntry + "</td></tr>" );
                 });
 
               });
@@ -64,4 +64,4 @@ title: My Github YAML Editor Micro Tool Base
 
 </script>
 <h1>My Github YAML Editor Micro Tool Base</h1>
-<table width="100%" border="1" id="editor"></table>
+<table width="100%" border="0" cellpadding="3" id="editor"></table>
