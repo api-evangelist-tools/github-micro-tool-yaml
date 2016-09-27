@@ -77,10 +77,11 @@ title: My Github YAML Editor Micro Tool Base
 
               $id = 'text-' + i + '-' + j;
               console.log('text-' + i + '-' + j);
-              $item = document.getElementById($id).value;
-
-              console.log("value: " . $item);
-
+              if(document.getElementById($id).value)
+                {
+                  $item = document.getElementById($id).value;
+                  console.log("value: " + $item);
+                }
             });
 
           });
