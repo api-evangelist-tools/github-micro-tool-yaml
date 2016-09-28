@@ -1,3 +1,3 @@
-# Project Name
+# Github Micro Tool - YAML Editor
 
-Some detail about this project w/ URL - http://example.com
+My base tool for managing YAML 100% on Github - https://kinlane.github.io/github-micro-tool-yaml/
