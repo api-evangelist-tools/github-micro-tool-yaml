@@ -11,14 +11,12 @@ title: My Github YAML Editor Micro Tool Base
   // Lot's of cleanup needed
 
   // Reset the cookie manually
-  //Cookies.expire('token');
-
-  var $yaml_store = "";
+  //Cookies.expire('token')
 
   function loadpage()
     {
     var $oAuthToken = document.getElementById('auth-token').value;
-
+    var $yaml_store = "";
 
     // When you fork, make sure ad add your org / user and repo name to _config.yml
     var $org = '{{ site.github_user }}';
@@ -84,6 +82,7 @@ title: My Github YAML Editor Micro Tool Base
   // Function for saving the pages
   function saveYAMLStore()
     {
+      var $yaml_store = "";
       $('#editor tr').each(function (i, row) {
         $('#row-' + i + ' td').each(function (j, cell) {
           $id = 'text-' + i + '-' + j;
