@@ -12,10 +12,13 @@ title: My Github YAML Editor Micro Tool Base
 
   // Reset the cookie manually
   //Cookies.expire('token');
+
+  var $yaml_store = "";
+
   function loadpage()
     {
     var $oAuthToken = document.getElementById('auth-token').value;
-    var $yaml_store = "";
+
 
     // When you fork, make sure ad add your org / user and repo name to _config.yml
     var $org = '{{ site.github_user }}';
