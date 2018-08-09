@@ -84,16 +84,16 @@ title: My Github YAML Editor Micro Tool Base
     {
       var $yaml_store = "";
       $('#editor tr').each(function (i, row) {
-
-        if(!$yaml_store[i])
-          {
-          $yaml_store[i] = [];
-          }
-
         $('#row-' + i + ' td').each(function (j, cell) {
           $id = 'text-' + i + '-' + j;
           if(document.getElementById($id))
             {
+
+              if(!$yaml_store[i])
+                {
+                $yaml_store[i] = [];
+                }
+
               $name = document.getElementById($id).name
               $value = document.getElementById($id).value;
               $yaml_store[i][$name] = $value;
