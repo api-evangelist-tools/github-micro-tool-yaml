@@ -5,6 +5,10 @@ title: My Github YAML Editor Micro Tool Base
 
 <script type="text/javascript">
 
+    // This isn't meant to be well-written JavaScript.
+    // It is meant to be a hackable, trainable moment.
+    // I've tried to document best that I can.
+
     // Reset the cookie manually
     //Cookies.expire('token');
     function loadpage()
@@ -30,6 +34,7 @@ title: My Github YAML Editor Micro Tool Base
       // Grab the token from cookie
       $oAuthToken = Cookies.get('token');
 
+      // If we have a token!
       if($oAuthToken!='')
         {
         // Setup the Github connection
