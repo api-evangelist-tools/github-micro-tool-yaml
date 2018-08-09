@@ -14,6 +14,9 @@ highlighter:  rouge
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md",".DS_Store"]
 
+logo:         https://kinlane-productions.s3.amazonaws.com/api-evangelist/api-evangelist-logo-400.png
+logo_width:   80
+logo_bottom_padding: 10
 github_user: api-evangelist-tools
 github_repo: github-micro-tool-yaml
 
