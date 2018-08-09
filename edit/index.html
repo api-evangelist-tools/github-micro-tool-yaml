@@ -8,12 +8,13 @@ title: My Github YAML Editor Micro Tool Base
     // This isn't meant to be well-written JavaScript.
     // It is meant to be a hackable, trainable moment.
     // I've tried to document best that I can.
+    // Lot's of cleanup needed
 
     // Reset the cookie manually
     //Cookies.expire('token');
     function loadpage()
       {
-      var $oAuthToken = getUrlVar('token');
+      var $oAuthToken = document.getElementById('auth-token').value;
       var $yaml_store = "";
 
       // When you fork, make sure ad add your org / user and repo name to _config.yml
