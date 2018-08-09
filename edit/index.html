@@ -15,13 +15,13 @@ title: My Github YAML Editor Micro Tool Base
 
   var $yaml_store = "";
 
+  // When you fork, make sure ad add your org / user and repo name to _config.yml
+  var $org = '{{ site.github_user }}';
+  var $repo = '{{ site.github_repo }}';
+
   function loadpage()
     {
     var $oAuthToken = document.getElementById('auth-token').value;
-
-    // When you fork, make sure ad add your org / user and repo name to _config.yml
-    var $org = '{{ site.github_user }}';
-    var $repo = '{{ site.github_repo }}';
 
     if($oAuthToken !='')
       {
