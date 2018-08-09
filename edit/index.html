@@ -7,67 +7,69 @@ title: My Github YAML Editor Micro Tool Base
 
     // Reset the cookie manually
     //Cookies.expire('token');
-
-    var $oAuthToken = getUrlVar('token');
-    var $yaml_store = "";
-
-    // When you fork, make sure ad add your org / user and repo name to _config.yml
-    var $org = '{{ site.github_user }}';
-    var $repo = '{{ site.github_repo }}';
-
-    if($oAuthToken !='')
+    function loadpage()
       {
+      var $oAuthToken = getUrlVar('token');
+      var $yaml_store = "";
 
-      // Setting a cookie value
-      Cookies.set('token', $oAuthToken);
+      // When you fork, make sure ad add your org / user and repo name to _config.yml
+      var $org = '{{ site.github_user }}';
+      var $repo = '{{ site.github_repo }}';
 
-      // Set with expiration
-      // Cookies.set('token', $oAuthToken, { expires: '01/01/2017' });
+      if($oAuthToken !='')
+        {
 
-      }
+        // Setting a cookie value
+        Cookies.set('token', $oAuthToken);
 
-    // Grab the token from cookie
-    $oAuthToken = Cookies.get('token');
+        // Set with expiration
+        // Cookies.set('token', $oAuthToken, { expires: '01/01/2017' });
 
-    if($oAuthToken!='')
-      {
-      // Setup the Github connection
-      var github = new Github({token: $oAuthToken,auth: "oauth"});
-      var repo = github.getRepo($org,$repo);
+        }
 
-      // Le'ts try to just get the Github Repo tree
-      repo.getTree('gh-pages?recursive=true', function(err, tree) {
+      // Grab the token from cookie
+      $oAuthToken = Cookies.get('token');
 
-        if(err == null && $oAuthToken != null)
-          {
-            // If no error we have access, read YAML store
-            repo.read('gh-pages', '_data/store.yaml', function(err, data) {
+      if($oAuthToken!='')
+        {
+        // Setup the Github connection
+        var github = new Github({token: $oAuthToken,auth: "oauth"});
+        var repo = github.getRepo($org,$repo);
 
-              $yaml_store = jsyaml.load(data);
+        // Le'ts try to just get the Github Repo tree
+        repo.getTree('gh-pages?recursive=true', function(err, tree) {
 
-              $( "#editor" ).append( "<tr><td colspan='2'><hr style='padding: 0px; margin: 0px;'></td></tr>");
+          if(err == null && $oAuthToken != null)
+            {
+              // If no error we have access, read YAML store
+              repo.read('gh-pages', '_data/store.yaml', function(err, data) {
 
-              $.each($yaml_store, function($rowKey, $rowEntry) {
-
-                $fieldNumKey = 0;
-                $.each($rowEntry, function($fieldKey, $fieldEntry) {
-                  $( "#editor" ).append( "<tr id='row-" + $rowKey + "' style='padding: 3px 0px 3px 0px;'><td id='row-" + $rowKey + "-" + $fieldNumKey + "' align='right' style='font-weight: bold;'>" + $fieldKey + ":</td><td><input type='text' name='" + $fieldKey + "' id='text-" + $rowKey + "-" + $fieldNumKey + "' value='" + $fieldEntry + "' style='width: 100%;' /></td></tr>" );
-                  $fieldNumKey++;
-                });
+                $yaml_store = jsyaml.load(data);
 
                 $( "#editor" ).append( "<tr><td colspan='2'><hr style='padding: 0px; margin: 0px;'></td></tr>");
 
+                $.each($yaml_store, function($rowKey, $rowEntry) {
+
+                  $fieldNumKey = 0;
+                  $.each($rowEntry, function($fieldKey, $fieldEntry) {
+                    $( "#editor" ).append( "<tr id='row-" + $rowKey + "' style='padding: 3px 0px 3px 0px;'><td id='row-" + $rowKey + "-" + $fieldNumKey + "' align='right' style='font-weight: bold;'>" + $fieldKey + ":</td><td><input type='text' name='" + $fieldKey + "' id='text-" + $rowKey + "-" + $fieldNumKey + "' value='" + $fieldEntry + "' style='width: 100%;' /></td></tr>" );
+                    $fieldNumKey++;
+                  });
+
+                  $( "#editor" ).append( "<tr><td colspan='2'><hr style='padding: 0px; margin: 0px;'></td></tr>");
+
+                });
               });
-            });
-          }
-        else
-          {
-          // If error we DO NOT have access
-          alert('We have NO access to API & repo!');
-          }
+            }
+          else
+            {
+            // If error we DO NOT have access
+            alert('We have NO access to API & repo!');
+            }
 
-        });
+          });
 
+        }
       }
 
       function saveYAMLStore()
@@ -95,11 +97,13 @@ title: My Github YAML Editor Micro Tool Base
 
           repo.getTree('gh-pages?recursive=true', function(err, tree) {
 
+            // I do not like looping through each item in tree, but only way I found to get SHA.
             $.each(tree, function(treeKey, treeValue) {
 
               $writepath = '_data/store.yaml';
               $path = treeValue['path'];
               $sha = treeValue['sha'];
+
               //console.log($path + ' == ' + $writepath);
               if($path==$writepath)
                 {
@@ -114,6 +118,15 @@ title: My Github YAML Editor Micro Tool Base
 
 </script>
 <h1>My Github YAML Editor Micro Tool Base</h1>
-<p align="center">YAML loaded from _data/store.yaml for editing, <a href="/github-micro-tool-yaml/">view by going back to home page</a>.</p>
+<p>This is the editor for this micro application, and will load the yaml from _data/store.yaml if you have permission to this site, which can then be <a href="/github-micro-tool-yaml/">viewed by going back to home page</a>.</p>
+<p>You can ask me <a href="https://twitter.com/apievangelist">@apievangelist</a> to be added to permissions for the repository, or you can fork, publish as gh-pages in your own site, and use it there.
+<table width="100%" border="0" cellpadding="3" id="token">
+    <tr>
+      <td align="right"><strong>Github Personal Auth Token:</td>
+      <td align="left"><input type="text" name="auth-token" id="auth-token" value="" size="100" /></td>
+      <td align="right"><iput type="button" name="loadpage" value="Load Page" onclick="loadpage();" /></td>
+    </tr>
+</table>
 <table width="100%" border="0" cellpadding="3" id="editor"></table>
 <center><input type="button" name="SaveYAML" value="Save YAML" onclick="saveYAMLStore();" /></center>
+<p>Once you have

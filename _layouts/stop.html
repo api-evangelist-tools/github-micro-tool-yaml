@@ -1,0 +1,32 @@
+---
+layout: default
+---
+<h2>{{ page.properties.name }}</h2>
+<p><img src="{{ page.properties.image }}" width="20%" align="right" style="padding: 10px;" /></p>
+<p>{{ page.properties.description }}</p>
+
+<!-- Building the links. Wish they were rel objects -->
+{% for link in page.links %}
+  {% if link.rel contains 'next' %}
+    {% assign next = link.href %}
+  {% endif %}
+  {% if link.rel contains 'previous' %}
+    {% assign previous = link.href %}
+  {% endif %}
+  {% if link.rel contains 'line' %}
+    {% assign line = link.href %}
+  {% endif %}
+  {% if link.rel contains 'area' %}
+    {% assign area = link.href %}
+  {% endif %}
+{% endfor %}
+
+<table width="100%">
+  <tr>
+    <td align="left" width="25%">{% if previous != empty %}<a href="{{ previous }}"><< Previous</a>{% endif %}</td>
+    <td align="center" width="25%">{% if area != empty %}<a href="{{ area }}">Area</a>{% endif %}</td>
+    <td align="center" width="25%">{% if line != empty %}<a href="{{ line }}">Line</a>{% endif %}</td>
+    <td align="right" width="25%">{% if next != empty %}<a href="{{ next }}">Next >></a>{% endif %}</td>
+  </tr>
+</table>
+<br /><br />
