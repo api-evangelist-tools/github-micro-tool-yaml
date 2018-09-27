@@ -16,5 +16,5 @@
   price: '19.99'
 - id: XYH123
   name: Product Five
-  description: This is the description for product five.
+  description: This is the description for product five. -test
   price: '19.96'
