@@ -8,7 +8,7 @@
   price: '19.99'
 - id: XYJ456
   name: Product Three
-  description: This is the description for product three.
+  description: This is the description for product three. - test
   price: '19.99'
 - id: XYJ789
   name: Product Four
